@@ -33,8 +33,8 @@ class Dingding extends MessageGateway
         $this->check($content, $data);
         $content = $content ?: $subject;
         $webhook = config('message.dingding.webhook');
-        foreach ($data['domainStatusArr'] as $v) {
-            $content .= $v;
+        foreach ($data['domainStatusArr'] as$key=> $v) {
+            $content .= $key.':'.$v.'; ';
         }
         try {
             $send_data = [
